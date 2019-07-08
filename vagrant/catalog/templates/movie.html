@@ -1,0 +1,56 @@
+<html>
+	
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+	<body>
+		<div class = 'pane'>
+		<h1>{{ genre.name }}</h1>
+		
+		{% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+    {% if movies !=[] %}
+
+		<a href = "{{url_for('newMovie', genre_id = genre.id )}}">Create New Movie</a>
+	</br></br>
+
+
+		{% for i in movies %}
+	
+
+		<p>{{i.name}}</p>
+	
+
+		<p>{{i.description}}</p>
+	
+
+		<p>{{i.director}}</p>
+
+
+		<p>{{i.starring}}</p>
+	
+		<a href='{{url_for('editMovie', genre_id = genre.id, movie_id=i.id ) }}' >Edit</a>
+	</br>
+	<a href='{{url_for('deleteMovie', genre_id = genre.id, movie_id=i.id ) }}' >Delete</a>
+</br>
+</br>
+
+		{% endfor %}
+
+		{% else %}
+		<p> You currently have no movie. <p>
+		<a href = "{{url_for('newMovie', genre_id = genre.id )}}">Create New Movie</a>
+			{% endif %}
+</div>
+	</body>
+
+</html>

@@ -1,0 +1,30 @@
+<html>
+
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+
+<body><h1> Edit Movie </h1>
+
+<form action="#" method = 'post'>
+
+
+	<p>Name:</p>
+		<input type ='text' size='250' name='name' placeholder = '{{movie.name }}'>
+	<p>Description:</p>
+		<input type ='text' size='250' name='description' placeholder = '{{movie.description}}'>
+	<p>Director:</p>
+		<input type ='text' size='250' name='director' placeholder = '{{movie.director}}'>
+	<p>Starring:</p>
+		<input type ='text' size='250' name='starring' placeholder = '{{movie.starring}}'>
+	
+<input type='submit' value='Edit'>
+
+
+<a href = '{{url_for('showMovie',genre_id = genre_id)}}'> Cancel </a>
+
+
+</form>
+</body>
+</html>
+
