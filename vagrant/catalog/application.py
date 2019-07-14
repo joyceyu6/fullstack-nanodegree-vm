@@ -307,7 +307,6 @@ def genresJSON():
 @app.route('/genre/')
 def showGenres():
     genres = session.query(Genre).order_by(asc(Genre.name))
-    print 'username'
     if 'username' not in login_session:  #local permission
         return render_template('publicgenre.html', genres = genres)
     else:
