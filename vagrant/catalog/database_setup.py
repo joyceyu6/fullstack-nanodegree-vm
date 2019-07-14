@@ -7,7 +7,8 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
-class User(Base):   #added for local permission
+
+class User(Base):   # added for local permission
     __tablename__ = 'user'
 
     id = Column(Integer, primary_key=True)
@@ -15,13 +16,16 @@ class User(Base):   #added for local permission
     email = Column(String(250), nullable=False)
     picture = Column(String(250))
 
+
 class Genre(Base):
     __tablename__ = 'genre'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
-    user_id = Column(Integer, ForeignKey('user.id')) #added for local permission
-    user = relationship(User) #added for local permission
+
+    # added for local permission
+    user_id = Column(Integer, ForeignKey('user.id'))
+    user = relationship(User)
 
     @property
     def serialize(self):
@@ -42,8 +46,10 @@ class Movie(Base):
     starring = Column(String(250))
     genre_id = Column(Integer, ForeignKey('genre.id'))
     genre = relationship(Genre)
-    user_id = Column(Integer, ForeignKey('user.id')) #added for local permission
-    user = relationship(User) #added for local permission
+
+    # added for local permission
+    user_id = Column(Integer, ForeignKey('user.id'))
+    user = relationship(User)
 
     @property
     def serialize(self):
