@@ -73,7 +73,33 @@ session.add(movie2)
 session.commit()
 
 movie3 = Movie(user_id = 1, name="Teenage Mutant Ninja Turtles", description="The Turtles have been forced to move in with their friend the news reporter April O'Neil, because the Foot Clan knows the whereabouts of their lair in the sewers",
-                     director="	Michael Pressman, Michael Pressman", starring="	Paige Turco, David Warner, Michelan Sisti", genre=genre2)
+                     director="	Michael Pressman, Michael Pressman", starring="Paige Turco, David Warner, Michelan Sisti", genre=genre2)
+
+session.add(movie3)
+session.commit()
+
+
+# Movie list for Comedy
+genre3 = Genre(user_id = 1, name="Comedy")
+
+session.add(genre3)
+session.commit()
+
+
+movie1 = Movie(user_id = 1, name="The Spy Who Dumped Me", description="After being dumped by her boyfriend who is a spy, a woman and her friend become embroiled in a conspiracy.",
+                     director="Susanna Fogel", starring="Mila Kunis and Kate McKinnon", genre=genre3)
+
+session.add(movie1)
+session.commit()
+
+movie2 = Movie(user_id = 1, name="Chef", description="A head chef (Jon Favreau) quits his restaurant job and buys a food truck in an effort to reclaim his creative promise, all while piecing back together his estranged family.",
+                     director="Jon Favreau", starring="Robert Downey , Scarlett Johansson , Jon Favreau , et al.", genre=genre3)
+
+session.add(movie2)
+session.commit()
+
+movie3 = Movie(user_id = 1, name="Overboard, description="A selfish, rich playboy, Leonardo, fires a hard working single mother, Kate, hired to clean his yacht. After getting amneisa Kate convinces him he is her husband as payback and puts him to work.",
+                     director="Bob Fisher and Rob Greenberg", starring="Eugenio Derbez , Anna Faris , Eva Longoria and John Hannah", genre=genre3)
 
 session.add(movie3)
 session.commit()
