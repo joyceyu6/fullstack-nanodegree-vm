@@ -98,7 +98,7 @@ movie2 = Movie(user_id = 1, name="Chef", description="A head chef (Jon Favreau) 
 session.add(movie2)
 session.commit()
 
-movie3 = Movie(user_id = 1, name="Overboard, description="A selfish, rich playboy, Leonardo, fires a hard working single mother, Kate, hired to clean his yacht. After getting amneisa Kate convinces him he is her husband as payback and puts him to work.",
+movie3 = Movie(user_id = 1, name="Overboard", description="A selfish, rich playboy, Leonardo, fires a hard working single mother, Kate, hired to clean his yacht. After getting amneisa Kate convinces him he is her husband as payback and puts him to work.",
                      director="Bob Fisher and Rob Greenberg", starring="Eugenio Derbez , Anna Faris , Eva Longoria and John Hannah", genre=genre3)
 
 session.add(movie3)
