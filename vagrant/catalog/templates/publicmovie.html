@@ -38,21 +38,21 @@
 	</div>
 
 	{% if movies !=[] %}	
-		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-3">
-				{% for i in movies %}
-				<h2>{{i.name}}</h2>
+		{% for movie_row in movies | batch(3) %}
+			<div class="row">
+				{% for i in movie_row %}
+				<div class="col-md-4">
+					<h2>{{i.name}}</h2>
 					<div class="movie-detail">
-					<p>{{i.description}}</p>
-					<h3>Director</h3>
-					<p class="movie-director">{{i.director}}</p>
-					<h3>Starring</h3>
-					<p>{{i.starring}}</p>				
+						<p>{{i.description}}</p>
+						<h3>Director</h3>
+						<p class="movie-director">{{i.director}}</p>
+						<h3>Starring</h3>
+						<p>{{i.starring}}</p>
 					</div>
+				</div>
 				{% endfor %}
 			</div>
-		    <div class="col-md-1"></div>
-		</div>
+		{% endfor %}
 	{% endif %}
 {% endblock %}

@@ -52,12 +52,12 @@
 	</div>
 	
 	{% if movies !=[] %}	
+	{% for movie_row in movies | batch(3) %}
 		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-3">
-				{% for i in movies %}
+			{% for i in movie_row %}
+			<div class="col-md-4">
 				<h2>{{i.name}}</h2>
-					<div class="movie-detail">
+				<div class="movie-detail">
 					<p>{{i.description}}</p>
 					<h3>Director</h3>
 					<p class="movie-director">{{i.director}}</p>
@@ -65,10 +65,11 @@
 					<p>{{i.starring}}</p>
 					<a href='{{url_for('editMovie', genre_id = genre.id, movie_id=i.id ) }}'>Edit</a> | 
 					<a href='{{url_for('deleteMovie', genre_id = genre.id, movie_id=i.id ) }}'>Delete</a>
-					</div>
-				{% endfor %}
+				</div>
 			</div>
-		    <div class="col-md-1"></div>
+			{% endfor %}
 		</div>
+	{% endfor %}
 	{% endif %}
+
 {% endblock %}
