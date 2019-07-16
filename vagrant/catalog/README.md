@@ -61,7 +61,13 @@ Once it is up and running, type `vagrant ssh` to log into it. This will log your
 vagrant ssh
 ```
 
-When you want to log out, type `exit` at the shell prompt.  To turn the virtual machine off (without deleting anything), type `vagrant halt`. If you do this, you'll need to run `vagrant up` again before you can log into it. Be sure to change to the `/vagrant` directory by typing `cd /vagrant` in order to share files between your home machine and the VM. 
+Once you log your terminal to the virtual machine, install ssl libary for python with following command, note that you only have to install this once, i.e., even if you log out of virtual machine, you don't have to install this again next time you log into your virtual machine:
+
+```shell
+sudo pip install pyOpenSSL
+```
+
+When you want to log out virtual machine, type `exit` at the shell prompt.  To turn the virtual machine off (without deleting anything), type `vagrant halt`. If you do this, you'll need to run `vagrant up` again before you can log into it. Be sure to change to the `/vagrant` directory by typing `cd /vagrant` in order to share files between your home machine and the VM. 
 
 ```shell
 vagrant halt
@@ -86,17 +92,24 @@ python application.py
 ```
 
 ## Run and test application in web access
-Visiting <http://localhost:8000> locally on your browser.
+Visiting <https://localhost:8000> locally on your browser.
 
-### Notes when you test the application:
+`IMPORTANT`: 
+- Make sure to use secured connection to the server (i.e., use https:// instead of http://)
+- You may get warning the first time when you run the app, please ignore the warning and proceed with the connection. For example, here is the warning message from Google Chrome web browser:
+  ![](https_warning.png)
+After you click `Advanced`, it will show more infomration, click on `Proceed to localhost(unsafe)` at the bottom of the message to proceed with testing
+  ![](https_goahead.png)
+  
+### Addtional notes when you test the application:
 - Facebook login is required before any update (create,delete,edit) functions can be performed
 - Users can only update the genre or movie created by themselves
 - `JSON endpoint` testing: type below code on your broswer to get the same arbitrary information as displayed in the `HTML endppoints`:
   - Get all movie genres:
-    <http://localhost:8000/genre/JSON>
+    <https://localhost:8000/genre/JSON>
   
   - Get all movies listed under selected genre:
-    http://localhost:8000/genre/<int:genre_id>/movie/JSON
+    https://localhost:8000/genre/<int:genre_id>/movie/JSON
   
   - Get details of a movie:
-    http://localhost:8000/genre/<int:genre_id>/movie/<int:movie_id>/JSON   
+    https://localhost:8000/genre/<int:genre_id>/movie/<int:movie_id>/JSON   
