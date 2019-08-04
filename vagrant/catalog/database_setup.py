@@ -45,7 +45,8 @@ class Movie(Base):
     director = Column(String(250))
     starring = Column(String(250))
     genre_id = Column(Integer, ForeignKey('genre.id'))
-    genre = relationship(Genre)
+    genre = relationship(Genre, cascade="all, delete-orphan", 
+                         single_parent=True)
 
     # added for local permission
     user_id = Column(Integer, ForeignKey('user.id'))
